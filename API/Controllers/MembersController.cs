@@ -1,7 +1,5 @@
-using System.Reflection.Metadata.Ecma335;
 using API.Data;
 using API.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +10,7 @@ namespace API.Controllers
     public class MembersController(AppDbContext context) : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers() //List is fine, it just gets you more useless methods for what we're doing
+        public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers() // List is fine, but gets you more useless methods for what we're doing
         {
             var members = await context.Users.ToListAsync();
             return members;
